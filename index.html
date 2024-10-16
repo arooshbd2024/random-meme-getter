@@ -1,0 +1,26 @@
+// FUT API Example (using JavaScript and Axios)
+const axios = require('axios');
+
+axios.get('https://fut-api.com/api/players')
+ .then(response => {
+    const players = response.data;
+    // Loop through each player and generate a card
+    players.forEach(player => {
+      const cardHTML = `
+        <div class="fifa-card">
+          <div class="card-image">
+            <img src="${player.image}" alt="${player.name}">
+          </div>
+          <div class="card-info">
+            <h2>${player.name}</h2>
+            <p>${player.position}</p>
+            <p>${player.rating}</p>
+          </div>
+        </div>
+      `;
+      // Append cardHTML to a container element or save to a file
+    });
+  })
+ .catch(error => {
+    console.error(error);
+  });
